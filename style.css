@@ -9,6 +9,7 @@ body {
 
 .middle {
   background-color: #938e94;
+  border-radius: 25px;
   position: absolute;
   text-align: center;
   left: 50%;
