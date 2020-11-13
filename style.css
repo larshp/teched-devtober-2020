@@ -1,0 +1,27 @@
+body {
+  background-color: #5d5c61;
+  font-family: sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.middle {
+  background-color: #938e94;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(100vw - 100px);
+  height: calc(100vh - 100px);
+}
+
+.img-middle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: calc(90vh - 100px);
+}
