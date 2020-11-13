@@ -13,9 +13,10 @@ body {
   text-align: center;
   left: 50%;
   top: 50%;
+  z-index: 100;
   transform: translate(-50%,-50%);
-  width: calc(100vw - 100px);
-  height: calc(100vh - 100px);
+  width: calc(100vw - 60px);
+  height: calc(100vh - 60px);
 }
 
 .img-middle {
@@ -24,4 +25,15 @@ body {
   top: 50%;
   transform: translate(-50%,-50%);
   height: calc(90vh - 100px);
+}
+
+.background {
+  background-color: #5d5c61;
+  color: #3a393d;
+  position: fixed;
+  white-space: nowrap;
+}
+
+.grey {
+  filter: grayscale(100%) brightness(40%);
 }

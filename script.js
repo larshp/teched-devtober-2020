@@ -1,16 +1,23 @@
-console.dir(window.gitdata);
-
 let currentSlide = 1;
 
+function removeGrey() {
+  const elements = document.getElementsByClassName("grey");
+  if (elements.length > 0) {
+    elements.item(0).classList.remove("grey");
+    setTimeout(removeGrey, 100);
+  }
+}
+
 function updateSlide() {
-  console.dir("render " + currentSlide);
-  const elements = document.getElementsByClassName("middle");
-  for (const e of elements) {
+  for (const e of document.getElementsByClassName("middle")) {
     if (e.attributes.getNamedItem("slide").value === currentSlide + "") {
       e.classList.remove("hidden");
     } else {
       e.classList.add("hidden");
     }
+  }
+  if (currentSlide === 3) {
+    removeGrey();
   }
 }
 
@@ -42,3 +49,40 @@ function onKeyDown(event) {
 }
 
 document.addEventListener("keydown", onKeyDown);
+
+function background() {
+  const columns = 7;
+  const rows = 15;
+
+  const height = Math.floor(document.documentElement.clientHeight / rows);
+  const width = Math.floor(document.documentElement.clientWidth / columns);
+
+  const topMargin = (document.documentElement.clientHeight - (height * rows))/2;
+
+  const div = document.getElementById("background");
+  div.innerHTML = "";
+
+  let data = window.gitdata.slice();
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      const left = c * width + 2;
+      const top = r * height + topMargin;
+      const font = height - 10;
+      const name = data.pop();
+
+      const cell = `<div class="background" style="z-index: -${r}; font-size: ${font}px; top: ${top}px; left: ${left}px; height: ${height}px; width: ${width}px;">
+      <img src="./users/${name}.png?size=64" class="grey" height="${height-2}px" width="${height-2}px">
+      ${name}
+      </div>`;
+      div.innerHTML = div.innerHTML + cell;
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', background, false);
+
+var doit;
+window.addEventListener('resize', function() {
+  clearTimeout(doit);
+  doit = setTimeout(background, 300);
+});
