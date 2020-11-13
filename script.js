@@ -67,11 +67,11 @@ function background() {
     for (let c = 0; c < columns; c++) {
       const left = c * width + 2;
       const top = r * height + topMargin;
-      const font = height - 10;
+      const font = height - 20;
       const name = data.pop();
 
       const cell = `<div class="background" style="z-index: -${r}; font-size: ${font}px; top: ${top}px; left: ${left}px; height: ${height}px; width: ${width}px;">
-      <img src="./users/${name}.png?size=64" class="grey" height="${height-2}px" width="${height-2}px">
+      <img src="./users/${name}.png?size=64" class="grey" height="${height-4}px" width="${height-4}px">
       ${name}
       </div>`;
       div.innerHTML = div.innerHTML + cell;
